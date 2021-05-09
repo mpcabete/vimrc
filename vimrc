@@ -1,9 +1,11 @@
+
+source $VIMRUNTIME/defaults.vim
 syntax on 
 
 set noerrorbells
 set belloff=all
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=2 softtabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
 set nu
@@ -14,6 +16,20 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
+
+" turn relative line numbers on
+:set relativenumber
+:set rnu
+
+" turn absolute line numbers off
+:set nonumber
+:set nonu
+
+" if it is a text file, add line breaks at 78 chars
+augroup vimrcEx
+  au!
+  autocmd FileType text setlocal textwidth=78
+augroup END
 
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
