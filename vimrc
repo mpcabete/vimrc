@@ -1,7 +1,10 @@
 
 source $VIMRUNTIME/defaults.vim
 syntax on 
+filetype plugin on
 
+set textwidth=0
+set nocompatible
 set noerrorbells
 set belloff=all
 set tabstop=2 softtabstop=2
@@ -9,7 +12,7 @@ set shiftwidth=2
 set expandtab
 set smartindent
 set nu
-" set nowrap
+set nowrap
 set smartcase
 set noswapfile
 set nobackup
@@ -17,20 +20,18 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 
-" turn relative line numbers on
-:set relativenumber
-:set rnu
-
 " turn absolute line numbers off
 :set nonumber
 :set nonu
 
-" if it is a text file, add line breaks at 78 chars
-augroup vimrcEx
-  au!
-  autocmd FileType text setlocal textwidth=78
-augroup END
+" turn hybrid line numbers on
+:set number relativenumber
+:set nu rnu
+" =========================================================
+inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
+autocmd FileType javascript inoremap ;f <Space>=<Space>(<++>)<Space>=>{<Enter><++><Enter>}<Esc>kk0t=i
+" =========================================================
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -41,6 +42,8 @@ Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jelera/vim-javascript-syntax'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -52,6 +55,8 @@ let g:gruvbox_guisp_fallback = 'bg'
 "colorscheme oceanicnext
 
 let mapleader = " "
+nnoremap <Space> <NOP>
+
 " atalho pra navegação
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -77,6 +82,12 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-css', 'coc-prettier', 'coc-pairs', 'coc-tsserver', 'coc-markdownlint']
+
+" if it is a text file, add line breaks at 78 chars
+augroup vimrcEx
+  au!
+  autocmd FileType markdown setlocal textwidth=78
+augroup END
 " 
 " =========================================================
 " coc settings
