@@ -1,4 +1,4 @@
-
+" mudar leader n pra toggle
 source $VIMRUNTIME/defaults.vim
 syntax on 
 filetype plugin on
@@ -31,6 +31,8 @@ set incsearch
 inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
 autocmd FileType javascript inoremap ;f <Space>=<Space>(<++>)<Space>=>{<Enter><++><Enter>}<Esc>kk0t=i
+autocmd FileType javascript nnoremap <Leader>/ ^i//<Space><Esc>3h
+autocmd FileType javascript inoremap c.l console.log('',<++>)<Esc>F'i
 " =========================================================
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -81,7 +83,7 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-css', 'coc-prettier', 'coc-pairs', 'coc-tsserver', 'coc-markdownlint']
+let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-css', 'coc-prettier', 'coc-tsserver', 'coc-markdownlint']
 
 " if it is a text file, add line breaks at 78 chars
 augroup vimrcEx
