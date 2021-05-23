@@ -31,6 +31,9 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+#============== ALIASSES
+alias ls="ls --color=auto"
+#=======================
 
 # prompt collors
 autoload -U colors && colors
@@ -59,3 +62,15 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 source /home/ssd/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#=============================== from kali zshrc========
+
+#============== ALIASSES
+alias history="history 0"   #show complete history
+
+# enable auto-suggestions based on the history
+if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+    . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    # change suggestion color
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
+fi
+

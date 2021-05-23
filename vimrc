@@ -1,4 +1,11 @@
 " mudar leader n pra toggle
+" nome do arquivo em algum lugar da tela
+" tab no normal?
+" ver bind igual . soh q pra movimento
+" * > *zz
+" carret
+" botar space space no normal mode
+" curcular marcado com v com {('
 source $VIMRUNTIME/defaults.vim
 syntax on 
 filetype plugin on
@@ -19,21 +26,8 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
+set cul
 
-" turn absolute line numbers off
-:set nonumber
-:set nonu
-
-" turn hybrid line numbers on
-:set number relativenumber
-:set nu rnu
-" =========================================================
-inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
-
-autocmd FileType javascript inoremap ;f <Space>=<Space>(<++>)<Space>=>{<Enter><++><Enter>}<Esc>kk0t=i
-autocmd FileType javascript nnoremap <Leader>/ ^i//<Space><Esc>3h
-autocmd FileType javascript inoremap c.l console.log('',<++>)<Esc>F'i
-" =========================================================
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -59,15 +53,6 @@ let g:gruvbox_guisp_fallback = 'bg'
 let mapleader = " "
 nnoremap <Space> <NOP>
 
-" atalho pra navegação
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-map <C-y>y "+y
-nmap <C-p>p "+p
-
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
@@ -82,6 +67,7 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
 
 let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-css', 'coc-prettier', 'coc-tsserver', 'coc-markdownlint']
 
@@ -258,3 +244,38 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+"================================ My Custom Settings
+
+" atalho pra navegação
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+
+" turn absolute line numbers off
+:set nonumber
+:set nonu
+
+" turn hybrid line numbers on
+:set number relativenumber
+:set nu rnu
+" =========================================================
+inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+
+noremap ç $
+autocmd FileType javascript inoremap ;f <Space>=<Space>(<++>)<Space>=>{<Enter><++><Enter>}<Esc>kk0t=i
+autocmd FileType javascript nnoremap <Leader>/ ^i//<Space><Esc>3h
+autocmd FileType javascript inoremap c.l console.log('',<++>)<Esc>F'i
+" probe
+autocmd FileType javascript nnoremap <leader>c byeoconsole.log('',)<Esc>3hpt)p
+autocmd FileType javascript vnoremap <leader>c yoconsole.log('',)<Esc>3hpt)p
+" =========================================================
+" ctrl C ctrl V
+map <C-y> "+y
+nnoremap <C-p> "+p
+
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue
+
+
